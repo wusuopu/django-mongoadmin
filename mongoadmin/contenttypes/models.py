@@ -6,7 +6,10 @@ else:
     from django.contrib.contenttypes.models import ContentTypeManager as DjangoContentTypeManager
     
     from mongoengine.queryset import QuerySet
+try:
     from mongoengine.django.auth import ContentType
+except ImportError:
+    from django_mongoengine.mongo_auth.models import ContentType
     
     from mongodbforms import init_document_options
     from mongodbforms.documentoptions import patch_document
